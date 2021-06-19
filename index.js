@@ -5,7 +5,6 @@ const Mailgun = require('./lib/mailgun')
 const Ses = require('./lib/amzn-ses')
 const Mandrill = require('./lib/mandrill')
 const config = require('./config.js')
-const Mail = require('nodemailer/lib/mailer')
 
 let serviceClasses = {
     Sendgrid,
