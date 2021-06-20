@@ -10,7 +10,7 @@ const config = {
             domain: process.env.MAILGUN_DOMAIN,
         },
         mandrill:{
-
+            mandrill: process.env.MANDRILL_API_KEY
         },
         ses:{
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
