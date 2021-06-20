@@ -2,3 +2,5 @@
 node_modules
 logs
 .vscode
+test/config.js
+temp

@@ -1,16 +1,17 @@
-const Mandrill = require('../lib/mandrill')
+const Mailgun = require('../lib/mailgun')
 const assert = require('assert')
 const config = require('./config.js')
 require('dotenv').config()
 
-describe('Tests for Mandrill', function(){
+describe('Tests for Mailgun', function(){
 
-    describe('#wrong key and send', function() {
+    describe('#wrong keys and send', function() {
         it('should error for incorrect apiKey', function(done) {
             const resolvingPromise = new Promise((resolve,reject)=>{
 
-                let mailer = new Mandrill({
-                    apiKey: config.wrongApiKey
+                let mailer = new Mailgun({
+                    apiKey: config.wrongApiKey,
+                    domain: process.env.MAILGUN_DOMAIN
                 })
 
                 mailer.send(config.from, config.to, 'Some subject', 'Some content')
@@ -20,15 +21,16 @@ describe('Tests for Mandrill', function(){
 
             resolvingPromise
                 .then((result)=>{})
-                .catch((e)=>{assert.strictEqual(e.message, 'Invalid API key')})
+                .catch((e)=>{assert.strictEqual(e.message, 'Forbidden')})
                 .then(done,done)
         })
 
         it('should successfully send the mail', function(done) {
             const resolvingPromise = new Promise((resolve,reject)=>{
 
-                let mailer = new Mandrill({
-                    apiKey: process.env.MANDRILL_API_KEY
+                let mailer = new Mailgun({
+                    apiKey: process.env.MAILGUN_API_KEY,
+                    domain: process.env.MAILGUN_DOMAIN
                 })
 
                 mailer.send(config.from, config.to, 'Some subject', 'Some content')

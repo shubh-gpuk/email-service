@@ -1,16 +1,16 @@
-const Mandrill = require('../lib/mandrill')
+const Sendgrid = require('../lib/sendgrid')
 const assert = require('assert')
 const config = require('./config.js')
 require('dotenv').config()
 
-describe('Tests for Mandrill', function(){
+describe('Tests for Sendgrid', function(){
 
     describe('#wrong key and send', function() {
         it('should error for incorrect apiKey', function(done) {
             const resolvingPromise = new Promise((resolve,reject)=>{
 
-                let mailer = new Mandrill({
-                    apiKey: config.wrongApiKey
+                let mailer = new Sendgrid({
+                    apiKey: config.wrongApiKey,
                 })
 
                 mailer.send(config.from, config.to, 'Some subject', 'Some content')
@@ -20,15 +20,15 @@ describe('Tests for Mandrill', function(){
 
             resolvingPromise
                 .then((result)=>{})
-                .catch((e)=>{assert.strictEqual(e.message, 'Invalid API key')})
+                .catch((e)=>{assert.strictEqual(e.message, '\tUnauthorized')})
                 .then(done,done)
         })
 
         it('should successfully send the mail', function(done) {
             const resolvingPromise = new Promise((resolve,reject)=>{
 
-                let mailer = new Mandrill({
-                    apiKey: process.env.MANDRILL_API_KEY
+                let mailer = new Sendgrid({
+                    apiKey: process.env.SENDGRID_API_KEY,
                 })
 
                 mailer.send(config.from, config.to, 'Some subject', 'Some content')
