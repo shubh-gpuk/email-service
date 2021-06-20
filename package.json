@@ -1,7 +1,7 @@
 {
-  "name": "email-service",
+  "name": "next-email-service",
   "version": "0.1.0",
-  "description": "",
+  "description": "A package to send emails using multiple email providers.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
