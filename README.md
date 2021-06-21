@@ -111,7 +111,7 @@ Then run command
 npm test
 ```
 
-# Some improvments needed
+# Some improvements needed
 - Add more test cases
 - Add more validations on data
 
