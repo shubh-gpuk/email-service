@@ -96,14 +96,32 @@ service.sendEmail(msg.from, msg.to, msg.subject, msg.content)
 })
 ```
 
+# Test
+For running the tests, first create **config.js** file in **test** folder. It should look like:
+```
+const config = {
+    wrongApiKey : 'fasgnjgtweti4we45anwad',
+    from: 'sender@email.com',
+    to: 'receiver@email.com'
+}
+module.exports = config
+```
+Then run command 
+```
+npm test
+```
+
+# Some improvments needed
+- Add more test cases
+- Add more validations on data
+
+
 # Todo
-If given more time, would like to implement these features as well.
+If given more time, would like to add these features as well.
 
 - Attachments
 - Multiple receivers
 - Email templates
-
-
 
 
 
